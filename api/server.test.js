@@ -43,23 +43,23 @@ describe("Server Auth Testing", () => {
   })
 
 
-  test(" Jokes should be defined", function() {
-    return request(server)
-        .get("/api/jokes/")
-        .then(res => { expect(res.body).toBeDefined(); })
-  })
-
-
-  test("Jokes should return truthy", function() {
-    return request(server)
-        .get("/api/jokes/")
-        .then(res => { expect(res.type).toBeTruthy()})
-  })
-
-  it("Truth test", function() {
-    return request(server)
-        .post('/api/auth/register')
-        .send({ username: "test", password: "1234" })
-        .then(res => {expect(res.type).toBeTruthy(); })
-  })
+  // test(" Jokes should be defined", function() {
+  //   return request(server)
+  //       .get("/api/jokes/")
+  //       .then(res => { expect(res.body).toBeDefined(); })
+  // })
+  //
+  //
+  // test("Jokes should return truthy", function() {
+  //   return request(server)
+  //       .get("/api/jokes/")
+  //       .then(res => { expect(res.type).toBeTruthy()})
+  // })
+  //
+  // it("Truth test", function() {
+  //   return request(server)
+  //       .post('/api/auth/register')
+  //       .send({ username: "test", password: "1234" })
+  //       .then(res => {expect(res.type).toBeTruthy(); })
+  // })
 })
