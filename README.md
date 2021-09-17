@@ -63,6 +63,10 @@ Your finished project must include all of the following requirements (further in
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+   1. Web tokens are stateful aren't bound by number of uses, sessions are stateless and have number constraints
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+   1. It hashes passwords
 3. How are unit tests different from integration and end-to-end testing?
+   1. Unit tests test in isolation, server tests test the entire system
 4. How does _Test Driven Development_ change the way we write applications and tests?
+   1. It's a philosophy designed to help prevent bugs
