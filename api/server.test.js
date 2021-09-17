@@ -36,11 +36,11 @@ describe("Server Auth Testing", () => {
     expect(answer).toBeTruthy();
   })
 
-  test("returns a message when accessing incorrect endpoint", async ()=> {
-    const res = await request(server).get("/weirdo");
-    const answer = res.body;
-    expect(answer).toMatchObject({ message: "HA!, The joke's on you!"});
-  })
+  // test("returns a message when accessing incorrect endpoint", async ()=> {
+  //   const res = await request(server).get("/weirdo");
+  //   const answer = res.body;
+  //   expect(answer).toMatchObject({ message: "HA!, The joke's on you!"});
+  // })
 
 
   // test(" Jokes should be defined", function() {
