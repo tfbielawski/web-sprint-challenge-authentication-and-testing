@@ -4,9 +4,9 @@ const helmet = require('helmet');
 
 const restrict = require('./middleware/restricted.js');
 
-//dotenv?
 const authRouter = require('./auth/auth-router.js');
 const jokesRouter = require('./jokes/jokes-router.js');
+const usersRouter = require('./users/users-router');;
 
 const server = express();
 
@@ -16,6 +16,7 @@ server.use(express.json());
 
 server.use('/api/auth', authRouter);
 server.use('/api/jokes', restrict, jokesRouter); // only logged-in users should have access!
+server.use('/api/users', restrict, usersRouter);
 
 server.get("*", (req, res) => { res.status(404).json({ message: "HA!, The joke's on you!"})})
 
