@@ -58,13 +58,14 @@ const validateCredentials = (req, res, next) => {
       })
 
 }
-router.post("/register", validateUserPass, validateUserName,(req, res, next) => {
-  const hash = bcrypt.hashSync(password, 8);
-  const { username, password } = req.body;
-  const {id} = req.body.id;
-  User.add({username, password:hash, id})
-      .then(saved => { res.status(201).json(saved); })
-      .catch(next);
+router.post('/register',validateUserPass, validateUserName, (req, res, next) => {
+    let user = req.body
+    const rounds = process.env.BCRYPT_ROUNDS || 8;
+    const hash = bcrypt.hashSync(user.password, rounds);
+    user.password = hash
+    User.add(user)
+        .then(newUser => {  res.status(201).json(newUser) })
+        .catch(next)
 });
 
   /*
