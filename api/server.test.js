@@ -1,7 +1,7 @@
 
 const server = require("./server")
-const request = require('supertest');
-const db = require('../data/dbConfig');
+// const request = require('supertest');
+// const db = require('../data/dbConfig');
 
 // Write your tests here
 test('sanity', () => {
@@ -20,21 +20,21 @@ describe("Server Auth Testing", () => {
   //   await db.migrate.latest();
   // })
   // Test register
-  test("creates a user", async () => {
-    //Request from server, assign to res
-    const res = await request(server)
-        //Post user data to register endpoint
-        .post("/auth/register")
-        .send({username: "Captain Marvel", password: "foobar"})
-    expect(res).toBeTruthy();
-
-  })
-
-  test("Tests server does respond when incorrect endpoint reached", async ()=> {
-    const res = await request(server).get("/weirdo");
-    const answer = res.body;
-    expect(answer).toBeTruthy();
-  })
+  // test("creates a user", async () => {
+  //   //Request from server, assign to res
+  //   const res = await request(server)
+  //       //Post user data to register endpoint
+  //       .post("/auth/register")
+  //       .send({username: "Captain Marvel", password: "foobar"})
+  //   expect(res).toBeTruthy();
+  //
+  // })
+  //
+  // test("Tests server does respond when incorrect endpoint reached", async ()=> {
+  //   const res = await request(server).get("/weirdo");
+  //   const answer = res.body;
+  //   expect(answer).toBeTruthy();
+  // })
 
   // test("returns a message when accessing incorrect endpoint", async ()=> {
   //   const res = await request(server).get("/weirdo");
