@@ -15,10 +15,10 @@ describe("Server Auth Testing", () => {
     expect(server).toBeDefined();
   })
 
-  beforeAll(async () =>   {
-    await db.migrate.rollback();
-    await db.migrate.latest();
-  })
+  // beforeAll(async () =>   {
+  //   await db.migrate.rollback();
+  //   await db.migrate.latest();
+  // })
   // Test register
   test("creates a user", async () => {
     //Request from server, assign to res
