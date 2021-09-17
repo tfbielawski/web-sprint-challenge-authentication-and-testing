@@ -1,65 +1,29 @@
-
-const server = require("./server")
-const request = require('supertest');
-const db = require('../data/dbConfig');
+const server = require('./server');
+const request= require('supertest');
 
 // Write your tests here
-test('sanity', () => {
-  expect(true).toBe(true)
-})
+test('sanity', () => {expect(true).toBe(true);})
 
+//There is a server
+describe("Server tests", () => {
+  test("The server runs", () => {  expect(server).toBeDefined();  })
 
-describe("Server Auth Testing", () => {
-  //Test if the server is there
-  it("[0] There is a server", () => {
-    expect(server).toBeDefined();
-  })
-
-  beforeAll(async () =>   {
-    await db.migrate.rollback();
-    await db.migrate.latest();
-  })
-  //Test register
-  test("creates a user", async () => {
-    //Request from server, assign to res
-    const res = await request(server)
-        //Post user data to register endpoint
-        .post("/auth/register")
-        .send({username: "Captain Marvel", password: "foobar"})
-    expect(res).toBeTruthy();
-
-  })
-
-  test("Tests server does respond when incorrect endpoint reached", async ()=> {
-    const res = await request(server).get("/weirdo");
+  test("Get returns a server message", async ()=> {
+    const res = await request(server).get('/');
     const answer = res.body;
     expect(answer).toBeTruthy();
+    expect(answer).toMatchObject({  message: "HERE BE JOKES"});
   })
 
-  test("returns a message when accessing incorrect endpoint", async ()=> {
+  test("Tests server does respond when incorrect endpoint reached", async () => {
     const res = await request(server).get("/weirdo");
     const answer = res.body;
-    expect(answer).toMatchObject({ message: "HA!, The joke's on you!"});
+    expect(answer).toMatchObject({  message: "HA!, The joke's on you!" })
   })
-
-
-  test(" Jokes should be defined", function() {
-    return request(server)
-        .get("/api/jokes/")
-        .then(res => { expect(res.body).toBeDefined(); })
-  })
-
-
+  
   test("Jokes should return truthy", function() {
     return request(server)
         .get("/api/jokes/")
         .then(res => { expect(res.type).toBeTruthy()})
-  })
-
-  it("Truth test", function() {
-    return request(server)
-        .post('/api/auth/register')
-        .send({ username: "test", password: "1234" })
-        .then(res => {expect(res.type).toBeTruthy(); })
   })
 })
